@@ -1,12 +1,13 @@
 # Quicksort algorithm -
 # Time Complexity :
-# 10    -
-# 100   -
-# 1000  -
-# 10000 -
+# 1      - 0.005
+# 10     - 0.006
+# 100    - 0.007
+# 1000   - 0.012
+# 10000  - 0.120
+# 100000 - 0.350 (maximum recursion depth reached, algorithm did not finish execution)
 
 import random
-import time
 
 
 def quick_sort(arr):
@@ -32,21 +33,14 @@ def quick_sort(arr):
 
 
 def generator(count):
-    random_list = random.sample((0, 100), count)
+    random_list = [random.randrange(1, 101, 1) for _ in range(count)]
     return random_list
 
 
-def tester(counts):
-    for i in range(0, len(counts)):
-        random_list = generator(counts[i])
-        total = 0
-        for _ in range(0, 5):
-            start = time.time()
-            quick_sort(random_list)
-            end = time.time()
-            total += (end-start)
-        average = total/5
-        print("for " + counts[i] + ' items, average time = ' + average)
+def tester():
+    count = 10000
+    random_list = generator(count)
+    quick_sort(random_list)
 
 
-tester([10, 100, 1000, 10000])
+tester()
