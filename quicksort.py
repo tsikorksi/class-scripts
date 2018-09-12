@@ -1,11 +1,12 @@
-# Quicksort algorithm -
+# Quicksort algorithm - measured with cProfiler
 # Time Complexity :
-# 1      - 0.005
-# 10     - 0.006
-# 100    - 0.007
-# 1000   - 0.012
-# 10000  - 0.120
-# 100000 - 0.350 (maximum recursion depth reached, algorithm did not finish execution)
+# items | total | sort only
+# 1      - 5ms / 0
+# 10     - 6ms / 0
+# 100    - 7ms / 0
+# 1000   - 12ms / 4ms
+# 10000  - 120ms / 95ms
+# 100000 - 350ms / 199ms (maximum recursion depth reached, algorithm did not finish execution)
 
 import random
 
