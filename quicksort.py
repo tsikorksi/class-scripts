@@ -7,6 +7,9 @@
 # 1000   - 12ms / 4ms
 # 10000  - 120ms / 95ms
 # 100000 - 350ms / 199ms (maximum recursion depth reached, algorithm did not finish execution)
+# memory usage: since it uses O(logn) memory to store the recursive arrays, this algorithm is quite memory inefficient
+# , hence why python stops the process if too many items are present. CPU usage is quite low, as the algorithm is
+#  optimised for performance over memory usage
 
 import random
 
