@@ -17,8 +17,8 @@ import random
 def quick_sort(arr):
     """
     quicksort algorithm
-    :param arr:
-    :return:
+    :param arr: the list to be sorted
+    :return: the two split half of the list
     """
     if len(arr) == 1 or len(arr) == 0:
         return arr
@@ -37,11 +37,20 @@ def quick_sort(arr):
 
 
 def generator(count):
+    """
+    generates lists of random numbers depending on supplied count
+    :param count: number of items to generate
+    :return: list of random numbers
+    """
     random_list = [random.randrange(1, 101, 1) for _ in range(count)]
     return random_list
 
 
 def tester():
+    """
+    tests timings of quicksort
+    :return:
+    """
     count = 10000
     random_list = generator(count)
     quick_sort(random_list)
