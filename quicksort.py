@@ -14,25 +14,25 @@
 import random
 
 
-def quick_sort(arr):
+def quick_sort(sorting_array):
     """
     quicksort algorithm
-    :param arr: the list to be sorted
+    :param sorting_array: the list to be sorted
     :return: the two split half of the list
     """
-    if len(arr) == 1 or len(arr) == 0:
-        return arr
+    if len(sorting_array) == 1 or len(sorting_array) == 0:
+        return sorting_array
     else:
-        pivot = arr[0]
+        pivot = sorting_array[0]
         i = 0
-        for j in range(len(arr) - 1):
-            if arr[j + 1] < pivot:
-                arr[j + 1], arr[i + 1] = arr[i + 1], arr[j + 1]
+        for j in range(len(sorting_array) - 1):
+            if sorting_array[j + 1] < pivot:
+                sorting_array[j + 1], sorting_array[i + 1] = sorting_array[i + 1], sorting_array[j + 1]
                 i += 1
-        arr[0], arr[i] = arr[i], arr[0]
-        first_part = quick_sort(arr[:i])
-        second_part = quick_sort(arr[i + 1:])
-        first_part.append(arr[i])
+        sorting_array[0], sorting_array[i] = sorting_array[i], sorting_array[0]
+        first_part = quick_sort(sorting_array[:i])
+        second_part = quick_sort(sorting_array[i + 1:])
+        first_part.append(sorting_array[i])
     return first_part + second_part
 
 
