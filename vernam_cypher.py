@@ -19,9 +19,12 @@ def encode(input_string):
         else:
             cipher_text += '0'
     print(cipher_text)
-    for i in range(0, len(cipher_text), 7):
-        # TODO: convert back to string
-        break
+
+    output_string = ''
+    for i in range(0, len(cipher_text), 8):
+        # todo: convert cipher text back to string
+        output_string += chr(int(cipher_text[i:i+8], base=2))
+    print(output_string)
     return cipher_text, pad_string
 
 
