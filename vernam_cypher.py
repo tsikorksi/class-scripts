@@ -4,6 +4,12 @@ import string
 
 
 def encode(input_string):
+    """
+    function to execute OTP cipher encoding, by converting to binary, xoring and then converting back
+    the conversions are harder then the actual algorithm tbh
+    :param input_string: the string to be encoded
+    :return: the cipher and the pad
+    """
     input_string = input_string.lower().replace(' ', '')
     binary_string = (' '.join(format(ord(x), 'b') for x in input_string)).replace(' ', '')
     # print(input_string, binary_string)
@@ -29,6 +35,11 @@ def encode(input_string):
 
 
 def generate_pad(count):
+    """
+    generates a list of ascii letters, lowercase
+    :param count: the number of letters
+    :return: the l chars as 1 string
+    """
     return ''.join(random.choices(string.ascii_lowercase, k=count))
 
 
