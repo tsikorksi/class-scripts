@@ -15,15 +15,22 @@ def encode(input_string):
     :param input_string: the string to be coded
     :return: the ciphered text, as well as the pad
     """
-    input_string = input_string.lower()
-    pad_string = generate_pad(len(input_string))
-    cipher_text = ''
-    # print(pad_string)
-    # print(input_string)
+    # input_string = input_string
+    # pad_string = generate_pad(len(input_string))
+    pad_string = 'hnbqemcpzbnrzlevkokffou'
+    # pad_string = 'poop'
+    cipher_text = []
+    cipher_pad = []
     for i in range(0, len(input_string)):
-        cipher_text += chr((((ord(input_string[i])-97) + (ord(pad_string[i]))-97) % 26) + 97)
-    print(cipher_text, pad_string)
-    return cipher_text, pad_string
+        cipher_text.append(ord(input_string[i]))
+        cipher_pad.append(ord(pad_string[i]))
+        cipher_text[i] = chr((int(cipher_text[i]) ^ int(cipher_pad[i])))
+    # print(cipher_text)
+    print(''.join(cipher_text), pad_string)
+    return cipher_text, cipher_pad
+
+
+# def decode():
 
 
 def generate_pad(count):
