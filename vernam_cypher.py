@@ -1,4 +1,7 @@
 # Vernam / One-time pad cypher
+# for juheb:
+# cipher text = pamezqprnnclspvicqsjsqy
+# pad = hnbqemcpzbnrzlevkokffou
 import random
 import string
 
