@@ -51,21 +51,12 @@ class DijkstraTest(unittest.TestCase):
 
 class AStarTest(unittest.TestCase):
 
-    def test_a_star(self, start, end, expected):
+    def test_a_star_basic(self):
         heuristics = {'a': 5, 'b': 3, 'c': 9, 'd': 0}
         graph = {'a': {'b': 1, 'c': 2},
                  'b': {'a': 1, 'c': 2, 'd': 3},
                  'c': {'a': 2, 'b': 2, 'd': 1},
-                 'd': {'b': 3, 'c': 1}}
-        # arrange
-        # assert
+                 'd': {'b': 3, 'c': 1}
+                 }
+        start, end = 'a', 'd'
         self.assertEqual(('abd', 4), a_star(graph, heuristics, start, end))
-
-
-# TESTS
-
-
-# dijkstra
-# test_dijkstra(graph, 'a', 'd', ('acd', 3))
-# a star
-# test_a_star(graph, heuristics, 'a', 'd', ('abd', 4))

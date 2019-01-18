@@ -36,13 +36,12 @@ def parser(nodes, previous, start, end):
     return route
 
 
-def dijkstra(graph, start, end):
+def list_setup(graph, start):
     """
-    Dijkstra's algorithm solver
-    :param graph: the graph to be solved
-    :param start: the start node
-    :param end: the destination node
-    :return: the route from start to end and that distance
+    generates and sets up the initial buffers
+    :param graph: the graph calculating for
+    :param start: the initial node
+    :return: the 4 buffers which are used to calculate the route, with their initial states filled
     """
     # list of all nodes, does not change
     nodes = list(graph.keys())
@@ -62,6 +61,19 @@ def dijkstra(graph, start, end):
 
     # sets the start nodes distance to 0, to kickstart algorithm
     distance[nodes.index(start)] = 0
+
+    return nodes, unvisited, distance, previous
+
+
+def dijkstra(graph, start, end):
+    """
+    Dijkstra's algorithm solver
+    :param graph: the graph to be solved
+    :param start: the start node
+    :param end: the destination node
+    :return: the route from start to end and that distance
+    """
+    nodes, unvisited, distance, previous = list_setup(graph, start)
 
     # until unvisited is empty
     while unvisited:
