@@ -53,6 +53,7 @@ def list_setup(graph, start):
     previous = []
 
     # note that distance, nodes and previous use the same indexes, and are equivalent to 1 list
+    # for example, the index 0 in every list refers to the same node
 
     # fills distance and previous with the default values
     for i in range(0, len(graph)):
@@ -63,6 +64,19 @@ def list_setup(graph, start):
     distance[nodes.index(start)] = 0
 
     return nodes, unvisited, distance, previous
+
+
+def heuristics_setup(nodes, heuristics_in):
+    """
+    transforms the heuristics dict into a list which matches up against the existing structure
+    :param nodes: the nodes list generated for the graph
+    :param heuristics_in: the dict supplied
+    :return: the list of heuristics matched to the nodes
+    """
+    heuristics = []
+    for i in range(0, len(nodes)):
+        heuristics.append(heuristics_in[nodes[i]])
+    return heuristics
 
 
 def dijkstra(graph, start, end):
@@ -97,4 +111,35 @@ def dijkstra(graph, start, end):
 
 
 def a_star(graph, heuristics, start, end):
-    return ()
+    """
+    A* search algorithm, which calculates the shortest distance between 2 nodes considering the heuristic values
+    :param graph: the graph to be searched
+    :param heuristics: the dict containing the heuristics for all the nodes
+    :param start: the start node
+    :param end: the destination
+    :return: the route to the end node and the distance
+    """
+    nodes, unvisited, distance, previous = list_setup(graph, start)
+    heuristics = heuristics_setup(nodes, heuristics)
+
+    # until unvisited is empty or the destination node has been visited
+    while unvisited or end not in unvisited:
+        # the key for the min value in unvisited
+        u = min_finder(distance, unvisited, nodes)
+
+        unvisited.remove(u)
+
+        # key: the char for the values in the sub-dict graph[u], dist is the associated distance
+        for key, dist in graph[u].items():
+            # the possible shorter distance, with heuristics accounted for
+            alternate_calc = distance[nodes.index(u)] + dist + heuristics[nodes.index(u)]
+            # checks if the new distance is quicker the the recorded one
+            if alternate_calc < distance[nodes.index(key)]:
+                # the actual distance , without heuristics
+                alternate = distance[nodes.index(u)] + dist
+                # replaces the distance in the list if so
+                distance[nodes.index(key)] = alternate
+                # replaces the last values in the previous list with the node travelled from
+                previous[nodes.index(key)] = u
+
+    return parser(nodes, previous, start, end), distance[nodes.index(end)]
