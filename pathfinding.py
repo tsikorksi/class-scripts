@@ -123,7 +123,7 @@ def a_star(graph, heuristics, start, end):
     heuristics = heuristics_setup(nodes, heuristics)
 
     # until unvisited is empty or the destination node has been visited
-    while unvisited or end not in unvisited:
+    while unvisited or end in unvisited:
         # the key for the min value in unvisited
         u = min_finder(distance, unvisited, nodes)
 
