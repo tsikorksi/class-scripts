@@ -66,6 +66,6 @@ class AStarTest(unittest.TestCase):
 
 
 # dijkstra
-test_dijkstra(graph, 'a', 'd', ('acd', 3))
+# test_dijkstra(graph, 'a', 'd', ('acd', 3))
 # a star
-test_a_star(graph, heuristics, 'a', 'd', ('abd', 4))
+# test_a_star(graph, heuristics, 'a', 'd', ('abd', 4))
