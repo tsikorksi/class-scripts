@@ -60,3 +60,16 @@ class AStarTest(unittest.TestCase):
                  }
         start, end = 'a', 'd'
         self.assertEqual(('abd', 4), a_star(graph, heuristics, start, end))
+
+    def test_a_star_advanced(self):
+        graph = {
+            'a': {'b': 5, 'd': 3, 'c': 3},
+            'b': {'a': 5, 'f': 2},
+            'c': {'a': 3, 'f': 3, 'e': 3},
+            'd': {'a': 3, 'e': 2},
+            'e': {'d': 2, 'c': 3},
+            'f': {'b': 2, 'c': 3}
+        }
+        heuristics = {'a': 5, 'b': 30, 'c': 5, 'd': 15, 'e': 10, 'f': 0}
+        start, end = 'a', 'f'
+        self.assertEqual(('acf', 6), a_star(graph, heuristics, start, end))
