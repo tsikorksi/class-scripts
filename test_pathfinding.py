@@ -19,7 +19,7 @@ class DijkstraTest(unittest.TestCase):
         self.assertEqual(('dca', 3), dijkstra(graph, 'd', 'a'))
         self.assertEqual(('bd', 3), dijkstra(graph, 'b', 'd'))
 
-    def test_simple1(self):
+    def test_simple(self):
         """
         the graph for one of the div exercises, in two variations
         """
