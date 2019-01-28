@@ -1,18 +1,26 @@
 
-def min_finder(distance, unvisited, nodes):
+
+def min_finder(distance, unvisited, nodes, flag, heuristics):
     """
     finds min of all nodes that are also in unvisited
     :param distance:  the array containing distances
     :param unvisited: the unvisited nodes
     :param nodes: all nodes keys
+    :param flag: if true, use heuristics to calculate the minimum
+    :param heuristics: the heuristics which need to be accounted for if flag is raised
     :return: the lowest value in distance whose key equivalent in nodes is in unvisited
     """
+    if heuristics is None and flag is True:
+        raise Exception("Flag is True, but there are no heuristics available for calculation, please check input")
     temp = 999999
     value = ''
     for i in range(0, len(distance)):
         if distance[i] < temp and nodes[i] in unvisited:
             value = nodes[i]
-            temp = distance[i]
+            if flag:
+                temp = distance[i] + heuristics[i]
+            else:
+                temp = distance[i]
     return value
 
 
@@ -92,7 +100,7 @@ def dijkstra(graph, start, end):
     # until unvisited is empty
     while unvisited:
         # the key for the min value in unvisited
-        current_node = min_finder(distance, unvisited, nodes)
+        current_node = min_finder(distance, unvisited, nodes, False, None)
 
         unvisited.remove(current_node)
 
@@ -125,15 +133,18 @@ def a_star(graph, heuristics, start, end):
     # until unvisited is empty or the destination node has been visited
     while unvisited or end in unvisited:
         # the key for the min value in unvisited
-        current_node = min_finder(distance, unvisited, nodes)
+        current_node = min_finder(distance, unvisited, nodes, True, heuristics)
 
         unvisited.remove(current_node)
 
         # key: the char for the values in the sub-dict graph[current_node], dist is the associated distance
         for key, dist in graph[current_node].items():
+
             # the possible shorter distance, with heuristics accounted for
-            alternate_calc = distance[nodes.index(current_node)] + dist + heuristics[nodes.index(current_node)]
+            alternate_calc = distance[nodes.index(current_node)] + dist + heuristics[nodes.index(key)]
+            print(current_node, key, heuristics[nodes.index(key)], alternate_calc)
             # checks if the new distance is quicker the the recorded one
+
             if alternate_calc < distance[nodes.index(key)]:
                 # the actual distance , without heuristics
                 alternate = distance[nodes.index(current_node)] + dist

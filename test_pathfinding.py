@@ -63,13 +63,13 @@ class AStarTest(unittest.TestCase):
 
     def test_a_star_advanced(self):
         graph = {
-            'a': {'b': 5, 'd': 3, 'c': 3},
+            'a': {'b': 5, 'd': 3, 'c': 7},
             'b': {'a': 5, 'f': 2},
-            'c': {'a': 3, 'f': 3, 'e': 3},
+            'c': {'a': 7, 'f': 3, 'e': 3},
             'd': {'a': 3, 'e': 2},
             'e': {'d': 2, 'c': 3},
             'f': {'b': 2, 'c': 3}
         }
         heuristics = {'a': 5, 'b': 30, 'c': 5, 'd': 15, 'e': 10, 'f': 0}
         start, end = 'a', 'f'
-        self.assertEqual(('acf', 6), a_star(graph, heuristics, start, end))
+        self.assertEqual(('acf', 10), a_star(graph, heuristics, start, end))
