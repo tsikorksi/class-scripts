@@ -9,7 +9,7 @@
 # Task 3 - Complete the get function to retrieve an item using the key
 
 # Task 4 - Experiment with different hash table sizes, how does changing the size affect the number of collisions?
-# Are there any with this data set?
+# Are there any with this data set? Only if the length is too short to have space for all the items,
 
 #
 
@@ -73,8 +73,17 @@ def get(key):
     hash_key = hash_function(key)
     return hash_table[hash_key - 1]
 
-def mid_square():
-    print("lmao")
+
+def mid_square(to_hash):
+    """
+    uses the mid square method, by taking the centre section of the square of the key and using it as the hash index
+    :param to_hash: the key to be hashed
+    :return: the correct index
+    """
+    square = to_hash ** 2
+    mid_section = len(str(square)) // 3
+    mid = str(square)[mid_section: mid_section * 2]
+    return int(mid) % size
 
 
 add(9921, "ABC")
