@@ -32,9 +32,15 @@ hash_table = [None] * size
 
 
 def hash_function(to_hash):
+    """
+    basic hash function using folding hash algorithm
+    :param to_hash: the number whose hash is to be computed
+    :return: the location of the information
+    """
     to_hash = str(to_hash)
     length = len(to_hash)
     total = 0
+    # if the length of the function isn't even
     if length % 2 != 0:
         flag = -1
     else:
@@ -42,7 +48,8 @@ def hash_function(to_hash):
 
     for i in range(0, length - 2 + flag, 2):
         total += int(to_hash[i: i + 2])
-
+    if flag == -1:
+        total += int(to_hash[length])
     return total % size
 
 
