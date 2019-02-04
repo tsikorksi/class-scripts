@@ -46,7 +46,7 @@ def hash_function(to_hash):
     else:
         flag = 0
 
-    for i in range(0, length - 2 + flag, 2):
+    for i in range(0, length + flag, 2):
         total += int(to_hash[i: i + 2])
     if flag == -1:
         total += int(to_hash[length])
@@ -54,15 +54,32 @@ def hash_function(to_hash):
 
 
 def add(key, item):
-    print("todo")
+    """
+    adds an item to the hash table
+    :param key: the key of the item
+    :param item: the item to be added
+    :return: nothing, as the global object is affected
+    """
+    hash_key = hash_function(key)
+    hash_table[hash_key - 1] = item
 
 
 def get(key):
-    print("todo")
+    """
+    gets the item/contents of the hash table at the key location
+    :param key: the location of the item to be fetched
+    :return: the associated item
+    """
+    hash_key = hash_function(key)
+    return hash_table[hash_key - 1]
+
+def mid_square():
+    print("lmao")
 
 
 add(9921, "ABC")
 add(7932, "DEF")
+add(54, "test")
 print(get(7932))
 print(hash_table)
 
