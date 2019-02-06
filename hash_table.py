@@ -9,7 +9,7 @@
 # Task 3 - Complete the get function to retrieve an item using the key
 
 # Task 4 - Experiment with different hash table sizes, how does changing the size affect the number of collisions?
-# Are there any with this data set? Only if the length is too short to have space for all the items,
+# Are there any with this data set? Only if the length is too short to have space for all the items, as the
 
 #
 
