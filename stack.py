@@ -38,7 +38,10 @@ expression = input("Enter a post-fix arithmetic expression: e.g 2 2 +")
 
 stack = Stack()
 for word in expression.split():
-    print(word)
+    if word in operators:
+        continue
+    else:
+        stack.push(word)
 
 
 # TASK: Complete the following tasks to build a Reverse Polish Notation Calculator
