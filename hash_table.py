@@ -9,12 +9,12 @@
 # Task 3 - Complete the get function to retrieve an item using the key
 
 # Task 4 - Experiment with different hash table sizes, how does changing the size affect the number of collisions?
-# Are there any with this data set? Only if the length is too short to have space for all the items, as the
-
+# Are there any with this data set? Only if the length is too short to have space for all the items,
+#  as the process is simple
 #
 
 # Task 5 - Add another hash function 'mid-square' method. How does this affect performance?
-# What makes a good hash function?
+# What makes a good hash function? It is faster and gives a wider range of values, reducing collision chance
 
 #
 
